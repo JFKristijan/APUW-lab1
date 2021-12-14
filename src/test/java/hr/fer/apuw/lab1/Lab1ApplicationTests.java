@@ -286,7 +286,7 @@ public class Lab1ApplicationTests {
 							new HttpEntity<>(headers),
 							Void.class);
 		}catch (HttpClientErrorException exc){
-			//jer se crasha ako ima 404
+			//dirty fix for not implmenting custom ResponseErrorHandler
 		}
 
 	}
