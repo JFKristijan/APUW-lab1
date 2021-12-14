@@ -28,22 +28,10 @@ public  class Mapper {
     }
 
     public static PostDTO PostToDTO(Post post){
-        if(post.getParent() == null){
-           return new PostDTO(
-                    post.getId(),
-                    post.getText(),
-                    Mapper.UserDTOWithoutPosts(post.getPoster()),
-                    Objects.requireNonNullElseGet(post.getReplies(), (Supplier<List<Post>>) ArrayList::new)
-                            .stream().map(Mapper::PostToDTO).collect(Collectors.toList()),
-                    null
-            );
-        }
         return new PostDTO(
                 post.getId(),
                 post.getText(),
-                Mapper.UserToDTO(post.getPoster()),
-                post.getReplies().stream().map(Mapper::PostToDTO).collect(Collectors.toList()),
-                PostToDTO(post.getParent())
+                Mapper.UserDTOWithoutPosts(post.getPoster())
         );
     }
 }
