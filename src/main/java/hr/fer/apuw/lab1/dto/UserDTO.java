@@ -20,4 +20,7 @@ public class UserDTO extends UserDTOWithoutPosts{
         this.posts=posts;
     }
 
+    public UserDTO() {
+        super();
+    }
 }

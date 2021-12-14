@@ -12,6 +12,7 @@ public class PostDTO {
     private Long id;
     private String text;
     private UserDTOWithoutPosts poster;
-    private List<PostDTO> replies;
-    private PostDTO parent;
+
+    public PostDTO() {
+    }
 }

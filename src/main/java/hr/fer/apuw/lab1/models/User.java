@@ -12,13 +12,20 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique=true,nullable = false)
     private String username;
 
+    @Column(nullable = false)
     private String password;
 
     @OneToMany(mappedBy = "poster")
     private List<Post> posts;
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }

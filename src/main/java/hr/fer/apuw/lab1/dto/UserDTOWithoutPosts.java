@@ -11,4 +11,7 @@ import java.util.List;
 public class UserDTOWithoutPosts {
     private Long id;
     private String username;
+
+    public UserDTOWithoutPosts() {
+    }
 }

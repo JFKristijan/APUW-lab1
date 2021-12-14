@@ -14,7 +14,7 @@ import java.util.Objects;
 public class Post {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     private String text;
@@ -22,13 +22,5 @@ public class Post {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="user_id",nullable = false)
     private User poster;
-
-    @OneToMany(mappedBy = "parent")
-    private List<Post> replies;
-
-    @ManyToOne
-    @JoinColumn(name="parent_id")
-    private Post parent;
-
 
 }

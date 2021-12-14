@@ -26,8 +26,12 @@ public class WebSecurityAdapter extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .httpBasic()
-                .and().authorizeRequests().antMatchers(HttpMethod.GET,"/users").permitAll()
-                .and().authorizeRequests().antMatchers(HttpMethod.POST,"/users").permitAll()
+                .and().authorizeRequests().antMatchers(HttpMethod.GET,"/users/**").permitAll()
+                .and().authorizeRequests().antMatchers(HttpMethod.POST,"/users/**").permitAll()
+                .and().authorizeRequests().antMatchers(HttpMethod.PUT,"/users/{id}").permitAll()
+                .and().authorizeRequests().antMatchers(HttpMethod.GET,"/swagger-ui/**").permitAll()
+                .and().authorizeRequests().antMatchers(HttpMethod.GET,"/api-docs/**").permitAll()
+                .and().authorizeRequests().antMatchers(HttpMethod.GET,"/docs.html").permitAll()
                 .and().authorizeRequests().anyRequest().authenticated()
                 .and().headers().frameOptions().sameOrigin()
                 .and().csrf().disable()
